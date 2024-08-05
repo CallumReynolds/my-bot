@@ -11,7 +11,7 @@ module.exports = {
 	  const server = client.guilds.cache.get(process.env.DISCORD_SERVER_ID);
 	  const channel = server.channels.cache.get(process.env.DISCORD_CHANNEL_ID);
   
-	  const scheduledMessage = new cron.CronJob('* * * * *', () => {
+	  const scheduledMessage = new cron.CronJob(process.env.CRON_MESSAGE_TIME, () => {
 		if (Date.now() >= Date.parse("September 09, 2024")) {
 		  channel.send('Space Marine 2 is out!');
 		  return; // Terminate the cron job after sending the message

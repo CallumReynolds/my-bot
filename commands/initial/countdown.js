@@ -16,6 +16,10 @@ function getTimeUntil(endDate) {
     const end = new Date(endDate);
   
     const differenceInMilliseconds = end - now;
+
+    if (differenceInMilliseconds <= 0) {
+        return "0 months, 0 days, 0 hours, 0 minutes and 0 seconds";
+    }
   
     // Convert milliseconds to seconds, minutes, hours, days, and months
     const seconds = Math.floor(differenceInMilliseconds / 1000);
@@ -44,7 +48,7 @@ function getTimeUntil(endDate) {
         return `${acc}${value} ${unitText}${separator}`;
       }
       return acc;
-    }, '0 months, 0 days, 0 hours, 0 minutes and 0 seconds');
+    }, '');
   
     return formattedTime.trim();
   }

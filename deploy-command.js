@@ -1,5 +1,5 @@
 import { REST, Routes } from 'discord.js';
-import { clientId, guildId } from './tsconfig.json';
+import { clientId } from './tsconfig.json';
 import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 

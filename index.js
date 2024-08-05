@@ -5,10 +5,13 @@ const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.commands = new Collection();
-const foldersPath = path.join(__dirname, 'commands');
-const commandFolders = fs.readdirSync(foldersPath);
 
-for (const folder of commandFolders) {
+const commandsPath = path.join(__dirname, 'commands');
+console.log(`Commands path is: ${commandsPath}`);
+
+try {
+  const commandFolders = fs.readdirSync(commandsPath);
+  for (const folder of commandFolders) {
 	const commandsPath = path.join(foldersPath, folder);
 	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 	for (const file of commandFiles) {
@@ -21,8 +24,12 @@ for (const folder of commandFolders) {
 		}
 	}
 }
+} catch (error) {
+  console.error(`Error reading commands directory: ${error}`);
+}
 
 const eventsPath = path.join(__dirname, 'events');
+console.log(`Events path is: ${eventsPath}`);
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 
 for (const file of eventFiles) {

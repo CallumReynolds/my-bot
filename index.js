@@ -30,17 +30,21 @@ try {
 
 const eventsPath = path.join(__dirname, 'events');
 console.log(`Events path is: ${eventsPath}`);
-const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 
-for (const file of eventFiles) {
-	const filePath = path.join(eventsPath, file);
-	const event = require(filePath);
-	// setup found events
-	if (event.once) {
-		client.once(event.name, (...args) => event.execute(...args));
-	} else {
-		client.on(event.name, (...args) => event.execute(...args));
-	}
+try {
+	const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
+	for (const file of eventFiles) {
+		const filePath = path.join(eventsPath, file);
+		const event = require(filePath);
+		// setup found events
+		if (event.once) {
+			client.once(event.name, (...args) => event.execute(...args));
+		} else {
+			client.on(event.name, (...args) => event.execute(...args));
+		}
+	}	
+} catch (error) {
+	console.error(`Error reading commands directory: ${error}`);
 }
 
 client.login(process.env.DISCORD_TOKEN);

@@ -1,7 +1,7 @@
 {
   "name": "my-bot",
   "scripts": {
-    "build": "bun build ./index.js --target bun --compile --outfile app"
+    "build": "bun build ./index.js --port=8080 --target bun --compile --outfile app"
   },
   "module": "index.ts",
   "type": "module",

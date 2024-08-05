@@ -29,8 +29,8 @@ module.exports = {
   
 
 function daysToSept9(xTime) {
-	// Create a Date object for September 9th
-	const targetDate = new Date(2024, 8, 9); // Month is 0-indexed
+	// Create a Date object for September 10th
+	const targetDate = new Date(2024, 8, 10); // Month is 0-indexed
   
 	// Convert xTime to a Date object if it's not already
 	const xDate = new Date(xTime);

@@ -8,8 +8,8 @@ module.exports = {
    {
 	  console.log(`Ready! Logged in as ${client.user.tag}`);
   
-	  const server = client.guilds.cache.get('1157240290181140554');
-	  const channel = server.channels.cache.get('1157240291011604502');
+	  const server = client.guilds.cache.get(process.env.DISCORD_SERVER_ID);
+	  const channel = server.channels.cache.get(process.env.DISCORD_CHANNEL_ID);
   
 	  const scheduledMessage = new cron.CronJob('* * * * *', () => {
 		if (Date.now() >= Date.parse("September 09, 2024")) {

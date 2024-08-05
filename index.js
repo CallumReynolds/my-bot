@@ -6,11 +6,11 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.commands = new Collection();
 
-const commandsPath = path.join(__dirname, 'commands');
-console.log(`Commands path is: ${commandsPath}`);
+const foldersPath = path.join(__dirname, 'commands');
+console.log(`Commands path is: ${foldersPath}`);
 
 try {
-  const commandFolders = fs.readdirSync(commandsPath);
+  const commandFolders = fs.readdirSync(foldersPath);
   for (const folder of commandFolders) {
 	const commandsPath = path.join(foldersPath, folder);
 	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));

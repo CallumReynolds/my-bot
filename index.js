@@ -2,6 +2,12 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 
+Bun.serve({
+	fetch(req) {
+	  return new Response("Bun!");
+	},
+});
+
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.commands = new Collection();

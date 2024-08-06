@@ -1,6 +1,8 @@
 const { Events } = require('discord.js');
 const cron = require('cron');
 
+const releaseDateG = process.env.SPACE_MARINE_RELEASE_DATE;
+
 module.exports = {
 	name: Events.ClientReady,
 	once: true,
@@ -15,7 +17,7 @@ module.exports = {
 		try {
 			console.log(`Running scheduled message for cron time: ${process.env.CRON_MESSAGE_TIME}`);
 
-			if (Date.now() >= Date.parse("September 10, 2024")) {
+			if (Date.now() >= Date.parse(releaseDateG)) {
 			  channel.send('Space Marine 2 is out!');
 			  return; // Terminate the cron job after sending the message
 			}
@@ -36,8 +38,8 @@ module.exports = {
   
 
 function daysToSept9(xTime) {
-	// Create a Date object for September 10th
-	const targetDate = new Date(2024, 8, 10); // Month is 0-indexed
+	const releaseDate = Date.parse(releaseDateG);
+	const targetDate = new Date(releaseDate);
   
 	// Convert xTime to a Date object if it's not already
 	const xDate = new Date(xTime);

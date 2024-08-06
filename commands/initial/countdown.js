@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 
-const targetDate = 'September 10, 2024';
+const targetDate = process.env.SPACE_MARINE_RELEASE_DATE;
 
 module.exports = {
 	data: new SlashCommandBuilder()

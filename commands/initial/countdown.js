@@ -12,7 +12,7 @@ module.exports = {
 };
 
 function getTimeUntil(endDate) {
-    const now = new Date().getTime() + (new Date().getTimezoneOffset() * 60 * 1000); // AEST
+    const now = new Date();
     const end = new Date(endDate);
   
     const differenceInMilliseconds = end - now;
